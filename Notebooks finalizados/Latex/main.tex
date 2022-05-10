@@ -1,0 +1,231 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\title{Projeto 2 - Computação Científica}
+\author{Rodrigo Mendes Palmeira \\ {rpalmeira1999@poli.ufrj.br} 
+   \and Mayara Azevedo Aragão\\  {mayaraaragao@poli.ufrj.br} }
+   
+\date{\today}
+   
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{mathtools}
+\usepackage{cancel}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{enumerate}
+
+
+\newcommand{\ffac}[1]{%
+  ^{\underline{#1}}%
+}
+
+\newcommand{\rfac}[1]{%
+  ^{\overline{#1}}%
+}
+
+
+\begin{document}
+\definecolor{myblue}{RGB}{80,80,160}
+\definecolor{mygreen}{RGB}{80,160,80}
+\setlength{\parskip}{1em}
+\maketitle
+
+\begin{enumerate}[1.]
+
+    \item Podemos observar que a integral definida  $ I(g) = \int_{-1}^{1} g(t)dt $ é uma aplicação linear no espaço $\mathcal{F}$, logo em $Pol_{n-1}$ a partir da verificação das seguintes propriedades:
+        \bigskip
+        \begin{enumerate}
+		\item Considerando que $\forall f,g \in \mathcal{F}$, podemos definir a integral $ I(f + g)$ como $ I(f) + I(g) $. De fato, seguindo as propriedades da integral, temos que a integral da soma , é a soma de integrais. Sendo assim, temos que:
+        $$  I(f + g) = \int_{-1}^{1} f(t)+g(t)dt  = \int_{-1}^{1} f(t)dt + \int_{-1}^{1} g(t)dt = I(f) + I(g) $$
+        
+		\item Considerando que para $g \in \mathcal{F}$ e $ \alpha \in \mathbb{R}$ , podemos definir a integral $ I(\alpha g)$ como $ \alpha \cdot I(f)  $. De fato, seguindo as propriedades da integral, temos que a constante multiplicativa pode ser retirada do integrando. Sendo assim, temos que:
+        $$I(\alpha g) = \int_{-1}^{1} \alpha g(t)dt  = \alpha \cdot \int_{-1}^{1} g(t)dt = \alpha \cdot I(g)$$
+        
+	    \end{enumerate}
+	    \bigskip
+	    Sendo assim, mostramos que a integral definida é uma aplicação linear de $\mathcal{F}$, logo em $P_{n-1}$ considerando as notações de interpolação polinomial.
+        
+        
+        
+
+        
+    \item Para provar que, para $g \in P_{n-1} $ com coeficientes $g_j$,
+    $$ I(g) = \int_{-1}^{1} g(t)dt  = \sum_{j=0}^{n-1} g_j \cdot \frac{1- (-1)^{1+j}}{1+j} $$
+    
+    Podemos provar que a derivada da integral $I(g)$ é igual a $g$, ou seja:
+    $$ \dfrac {d( I(g)) }{dt} = \dfrac {d( \int_{-1}^{1} g(t)dt) }{dt} = g(t)$$
+    
+    Para isso, podemos representar o polinômio $g(t) = g_0 + g_1 t + ... + g_{n-1} t^{n-1}$ como um somatório com os coeficientes $g_j$:
+    
+    $$g(t) = \sum_{j=0}^{n-1} g_j \cdot t^j $$
+    
+    
+    A integral do polinômio $g(t)$ deve seguir a seguinte lógica
+    
+    $$\int g(t)dt = \sum_{j=0}^{n-1} \frac{g_j \cdot t^{j+1}}{j+1}  $$
+    
+    Pois ao aplicar a derivada, obtemos:
+    $$ \dfrac {d( \sum_{j=0}^{n-1} \frac{g_j \cdot t^{j+1}}{j+1} ) }{dt} = \sum_{j=0}^{n-1} \frac{g_j \cdot (\cancel{j+1}) \cdot t^{j +\cancel{1} - \cancel{1}}}{\cancel{j+1}} =  \sum_{j=0}^{n-1} g_j \cdot t^j = g(t)  $$
+    
+    Sendo assim, ao considerar o intervalo $ [-1,1]$ fornecido temos que a integral nesse intervalo, de modo que a derivada seja igual ao polinômio $g$, deve ser:
+    
+    $$\int_{-1}^{1} g(t)dt = \sum_{j=0}^{n-1} \frac{g_j \cdot t^{j+1}}{j+1} \bigg|_{t=-1}^{t=1}  $$
+    
+
+    
+    $$\int_{-1}^{1} g(t)dt  =  \sum_{j=0}^{n-1} g_j \cdot \frac{(1)^{j+1}}{j+1} - \sum_{j=0}^{n-1} g_j \cdot \frac{(-1)^{j+1}}{j+1} $$
+        
+    Colocando em evidência:
+    
+    $$\sum_{j=0}^{n-1} \frac{g_j}{j+1}  \cdot \left( 1^{j+1} - (-1)^{j+1} \right)  = \sum_{j=0}^{n-1} \frac{g_j}{j+1}  \cdot \left( 1^{\cancel{j+1}} - (-1)^{j+1} \right) =$$
+        
+    $$=  \sum_{j=0}^{n-1} g_j \cdot \frac{1- (-1)^{1+j}}{1+j} $$
+        
+    Sendo assim, a integral $I(g)$ dentro do intervalo fornecido, pode ser representada pelo somatório: 
+    $$ I(g) = \sum_{j=0}^{n-1} g_j \cdot \frac{1- (-1)^{1+j}}{1+j}  $$
+    
+    
+    
+    \bigskip\bigskip
+    \item    
+    
+     Sabendo que a aplicação linear $L_X: \mathcal{F} \rightarrow Pol_{n-1} $
+     e a aplicação linear da integral $I:g \mapsto \int_{-1}^{1} g(t) dt$ em um polinômio interpolador $I:Pol_{n-1} \rightarrow \mathcal{R} $.
+     
+     Dado que foi provado na questão 1 e o que foi fornecido nas notações de interpolação polinômial, tanto $L_X$ quanto $I$ são aplicações lineares. Logo, temos que a aplicação composta $I_X: \mathcal{F} \rightarrow \mathcal{R} : f \mapsto \int_{-1}^{1} \left( L_x(f) \right)(t) dt $ que calcula a integral de uma aplicação $L_X$ de $\mathcal{F}$ em $Pol_{n-1}$, ou seja, calcula a integral do polinômio interpolador de $f$,  (dadas as abscissas $x_i \in X$) pode ser escrita como a seguinte composição:
+     
+     $$I_X = I(L_X(f)) =  (I \circ L_X) (f)$$  
+     
+     e garantimos que
+     
+     $$I_X:\mathcal{F} \rightarrow \mathcal{R} $$
+     
+    
+    \bigskip\bigskip
+    \item Como vimos na questão anterior, $I_X(f) = (I \circ L_X)(f)$ = $\int_{-1}^{1}(L_X(f))(t)dt$, dessa forma podemos notar, já que o intervalo é previamente definido, que o valor da integral só depende do $Pol_{n-1}$ resultante de $L_X(f)$. Sabemos também pela definição de $L_X$ e de interpolação que o polinômio resultante só depende do valor de $f$ nos pontos $x_i$, pois eles definem unicamente um polinômio $Pol_{n-1}$ que passa por todos eles, assim depende apenas de $\pi_X$ que é o vetor formado pelos valores de $f$ nos pontos $x_i$, tendo em vista que, portanto, qualquer função com o mesmo $\pi_X$ terá o mesmo $L_X$. Assim, a $I_X(f)$ só depende de $\pi_X$ de $f$.
+    
+    
+    \bigskip\bigskip
+    \item Sabemos que:
+    $$I_X(f) = \int_{-1}^{1}(L_X(f))(t)dt $$
+    Bem e sabemos que $L_X(f)$ é um polinômio $Pol_{n-1}$, assim com $d \leq n-1$
+    $$I_X(f) = \int_{-1}^{1}( \alpha_0 + \alpha_1 \cdot t + ... + \alpha_{d} \cdot t^{d} )dt $$
+    $$= \int_{-1}^{1} \alpha_0 dt + \int_{-1}^{1} \alpha_1 \cdot t dt + ... + \int_{-1}^{1} \alpha_{d} \cdot t^{d} dt$$
+    Assim sabendo que a Integral de polinômios de grau zero até d(e, para os valores entre d e (n-1), $w_i =0$) é sempre bem definida nesse intervalo, ou seja, dá um valor real qualquer, podemos fazer:
+    \[ w_i f(x_i) = \int_{-1}^{1} \alpha_i t^i \]
+    \[ w_i f(x_i) = \alpha_i \int_{-1}^{1}  t^i \]
+    \[ w_i f(x_i) = \alpha_i \cdot \frac{t^{i+1}}{i+1} \bigg|_{t=-1}^{t=1} \]
+    \[ w_i  =  \frac{f(x_i) }{\alpha_i} \cdot \frac{t^{i+1}}{i+1} \bigg|_{t=-1}^{t=1} \]
+    Logo
+    \[I_X(f) =  \int_{-1}^{1} \alpha_0 dt + \int_{-1}^{1} \alpha_1 \cdot t dt + ... + \int_{-1}^{1} \alpha_{d} \cdot t^{d} dt = \sum w_i \cdot f(x_i)\]
+    
+    
+    \bigskip\bigskip
+    \item Como vimos em sala, para calcular a equação matricial que determina os coeficientes $g_j$, basta resolver o seguinte sistema linear, para cada $x_i$:
+    
+    $$ M \cdot g = \pi _X $$
+    
+    De modo que, $M$ é a matriz de Vandermonde para definir o polinômio interpolador para cada ponto $x_i$:
+    
+    $$ \begin{bmatrix}
+    x_1^0 & x_1^1 & x_1^2 & \cdots &x_1^{n-1}\\
+    x_2^0 & x_2^1 & x_2^2 & \cdots &x_2^{n-1}\\
+    \vdots & & \ddots & & \vdots \\ 
+    x_n^0 & x_n^1 & x_2^2 & \cdots &x_n^{n-1}\\
+    \end{bmatrix} $$
+    
+    Logo, ao multiplicar cada linha da matriz $M$ pelo vetor de coeficientes $g_j$, o resultado obtido é justamente $f(x_i)$ para cada ponto $x_i$ aplicado. 
+    
+     $$ \begin{bmatrix}
+    x_i^0 & x_i^1 & x_i^2 & \cdots &x_i^{n-1}\\
+
+    \end{bmatrix} \begin{bmatrix}  g_0 \\ g_1 \\ \vdots \\ g_{n-1}\\ \end{bmatrix}  = g_o x_i^0 + g_1 x_i^1 +  g_2 x_i^2 + \cdots + g_{n-1} x_i^{n-1} = f(x_i)$$
+    
+    
+    Lembrando que para uma interpolação a partir de $n$ pontos, o polinômio interpolador pode ter grau até $n-1$. Sendo assim, para encontrarmos os coeficientes $g_j$, precisamos apenas da matriz $M$ e do valor dos $f(x_i)$ ao resolver o seguinte sistema linear: 
+    
+     $$ \cancel{M^{-1}} \cdot \cancel M \cdot g = M^{-1} \cdot  \pi _X $$
+     
+    
+     $$  g = M^{-1} \cdot  \pi _X $$
+     
+     Assim, resta provar que a matriz M de Vandermonde é inversível, o que podemos fazer ao provar que as colunas da matriz $M$ são linearmente independentes. 
+     
+     Vamos chamar cada coluna da matriz $M$ de um vetor $m_i$ . Logo,
+     $$ m_i = ( x_0^i, x_1^i, \cdots , x_n^i )$$
+     Então, vamos assumir que existem coeficientes $c_i$ reais de modo que o somatório de todos os vetores coluna vezes o coeficiente $c_i$ correspondente, resulte em um vetor de zeros:
+     
+        $$ c_0 m_0 + c_1 m_1 + c_2 m_2 + \cdots + c_n m_{n-1} = \vec 0$$
+        
+    Analisando a coordenada $i$ especificamente, temos que:
+    
+    
+        $$ c_0 x_i ^0 + c_1 x_i^1 + c_2 x_i ^2 + \cdots + c_n x_i ^{n-1} =  0$$
+     
+        $$ c_0  + c_1 x_i + c_2 x_i ^2 + \cdots + c_n x_i ^{n-1} =  0$$
+        
+    Logo, para que essa equação resulte em $0$, significa que $x_i$ é raiz do polinômio acima. Contudo, temos $n$ pontos diferentes, e o polinômio possui grau máximo de $n-1$. Logo, possuimos mais pontos que raizes, então para que o polinômio correspondente a cada coordenada $i$ resulte em $0$, temos que $c_0 = c_1 = c_2 = \cdots = c_n =0 $ .
+    
+    Sendo assim, provamos que os vetores colunas de $M$ são linearmente independentes, então a matriz $M$ é inversível e conseguimos obter os coeficientes $g_j$ a partir da sua inversa: 
+    
+     
+     $$  g = M^{-1} \cdot  \pi _X $$
+     
+     
+    \bigskip\bigskip
+    \item Pela definição:
+    \[ I(g) = \int_{-1}^{1} g(t)dt = \int_{-1}^{1} \left( \sum_j g_j \cdot t^j \right) dt \]
+    Pelas propriedades da integral: 
+    \[= \sum_j \int_{-1}^{1} g_j \cdot t^j dt = \sum_j g_j \int_{-1}^{1} t^j dt = \sum_j g_j \frac{t^{j+1}}{j+1} \bigg|_{t=-1}^{t=1} \]
+    Logo tendo que $g= (g_j) = (g_0,..., g_{d-1})$ e $ts = \left (\frac{t^{1}}{1} \bigg|_{t=-1}^{t=1} ,...,\frac{t^{d+1}}{d+1} \bigg|_{t=-1}^{t=1} \right) $, temos que :
+    \[\sum_j g_j \frac{t^{j+1}}{j+1} \bigg|_{t=-1}^{t=1} = \left<(g_j), ts \right> \]
+    Assim fazendo $v= ts$, temos que:
+    \[ I(g) = \left<(g_j),v \right> \]
+    
+    \bigskip\bigskip
+    \item Como vimos na questão anterior $I(g) = \left<(g_j),v \right>$, assim temos:
+    \[ I(g) = \left<(g_j),v \right> \]
+    E como $\gamma =(g_j)$ é solução do sistema linear $M \gamma = \pi_X(f)$, temos:
+    \[ I(g) = \left<(g_j),v \right> = \left<\gamma,v \right>  = \left< M^{-1} \pi_X(f),v \right>\]
+    \[= \left( M^{-1} \pi_X(f) \right)^{T} v = \pi_X^{T} (M^{-1})^T v \]
+    \[= \left< \pi_X(f),   (M^{-1})^T v \right>\]
+    \bigskip\bigskip
+    
+    \item Sabemos pela definição de $I_X$, que:
+    $$I_X(f) = \int_{-1}^{1}(L_X(f))(t)dt $$
+    Como g é um polinômico interpolador de Lagrange e $L_X$ é uma projeção temos que:
+    $$I_X(f) = \int_{-1}^{1}(L_X(f))(t)dt = \int_{-1}^{1}g(t)dt = I(g)$$
+    
+    \[I(g) = \left< \pi_X(f),   (M^{-1})^T v \right> \]
+    Chamando $(M^{-1})^T v= \eta$, temos pela definição de produto escalar que:
+    \[I(g) = \left< \pi_X(f),   \eta \right>  = \sum_{i} \eta_i f(x_i) \]
+    E pela 5, temos que $I_X(f) = \sum_{i} w_i f(x_i) $, logo:
+    \[I_X(f)= \sum_{i} w_i f(x_i) = I(g) = \sum_{i} \eta_i f(x_i)\]
+    Dessa forma temos que:  
+    \[w = \eta= (M^{-1})^T v \]
+    
+    \bigskip\bigskip
+    \item Como provado anteriormente, temos que $L_X$ só depende de $x_i$ e $f(x_i)$.
+    Logo, a partir do polinômio interpolador de $f$, podemos calcular a integral para limites $[a,b]$ modificando os últimos passos da questão 2, assim, temos que a integral do polinômio $g(t)$ será:
+    
+     $$\int_{a}^{b} g(t)dt = \sum_{j=0}^{n-1} \frac{g_j \cdot t^{j+1}}{j+1} \bigg|_{t=a}^{t=b}  $$
+    
+    $$\int_{a}^{b} g(t)dt  =  \sum_{j=0}^{n-1} g_j \cdot \frac{(b)^{j+1}}{j+1} - \sum_{j=0}^{n-1} g_j \cdot \frac{(a)^{j+1}}{j+1} $$
+    
+    
+    $$\int_{a}^{b} g(t)dt = \sum_{j=0}^{n-1} \frac{g_j}{j+1} \cdot (b^{j+1} - a^{j+1} ) $$
+    
+    \bigskip\bigskip
+    
+
+    
+\end{enumerate}
+
+
+
+\end{document}
