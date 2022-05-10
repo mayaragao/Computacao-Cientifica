@@ -1,6 +1,10 @@
-# Computacao-Cientifica
-Implementação de técnicas computacionais desenvolvidas durante o curso de Computação Científica I (MAE113).
+# Computação Científica I
 
+Técnicas computacionais implementadas durante o curso de Computação Científica I (MAE113). Desenvolvimento de métodos para o algoritmo da bisseção, Método de Newton, Derivadas Numéricas, Integração númerica, EDOs, Interpolação Polinomial, Regressão, Álgebra Linear e Autovetores e Autovalores. 
+
+***Linguagem***: Python scientific stack (*Python3 + NumPy + SciPy*) com utilização de Jupyter notebook e matplotlib. 
+
+##
 #### Revisão de Python
    * [Teste 0](Teste0.ipynb)
    * [Teste 0 Resolvido](https://github.com/mayaragao/Computacao-Cientifica/blob/4def43b272bed20c7c972f6675b08433ada3ecfc/Notebooks%20finalizados/MayaraAragao_Teste0.ipynb)
