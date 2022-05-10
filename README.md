@@ -35,7 +35,7 @@ Implementação de técnicas computacionais desenvolvidas durante o curso de Com
  
 #### Regressão
   * [Teste 8](Teste8.ipynb)
-  * [Dados]
+  * [Dados](https://github.com/mayaragao/Computacao-Cientifica/blob/864d43591808b6048b3b4506142978c0a62702e3/Demanda_16.04.2018-16.05.2018%20(1).npz)
   * [Teste 8 Resolvido](https://github.com/mayaragao/Computacao-Cientifica/blob/4def43b272bed20c7c972f6675b08433ada3ecfc/Notebooks%20finalizados/MayaraAragao_Teste8.ipynb)
  
 #### Álgebra Linear - Parte I
